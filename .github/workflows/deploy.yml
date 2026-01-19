@@ -17,6 +17,6 @@ jobs:
           port: ${{ secrets.NAS_PORT }}
           script: |
                       cd /volume1/docker/side_pj_fe/side_pj_fe
-                      git pull origin main
-                      # 비밀번호를 sudo에게 전달하는 방식 (-S 옵션 사용)
+                      git fetch origin main
+                      git reset --hard origin/main
                       echo "${{ secrets.NAS_PWD }}" | sudo -S docker compose up -d --build
